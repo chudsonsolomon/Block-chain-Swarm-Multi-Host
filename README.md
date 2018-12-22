@@ -11,9 +11,9 @@ docker swarm join --token SWMTKN-1-0nwxf6rqlx6tjec5emxywl19s0dn7iuwgc1736xhz14jx
 Host1:
 ------
 # Replace crypto-config.yaml and configtx.yaml file as per your organization Name.
-./cryptogen generate --config=crypto-config.yaml
-./configtxgen -profile mychannel -outputCreateChannelTx ./composer-channel.tx -channelID mychannel
-./configtxgen -profile ComposerOrdererGenesis -outputBlock ./composer-genesis.block
+   - ./cryptogen generate --config=crypto-config.yaml
+   - ./configtxgen -profile mychannel -outputCreateChannelTx ./composer-channel.tx -channelID mychannel
+   - ./configtxgen -profile ComposerOrdererGenesis -outputBlock ./composer-genesis.block
 
 docker run -it -d --network="my_network" -p 27054:7054 -e CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=my_network -e FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server -e FABRIC_CA_SERVER_CA_NAME=ca.org1.example.com -v /opt/swarm-test/fabric-scripts/hlfv12/composer/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config --name=ca.org1.example.swarm.com hyperledger/fabric-ca:1.2.1 sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/*_sk -b admin:adminpw -d'
 
