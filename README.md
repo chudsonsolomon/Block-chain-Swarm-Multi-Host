@@ -10,7 +10,7 @@ docker swarm join --token SWMTKN-1-0nwxf6rqlx6tjec5emxywl19s0dn7iuwgc1736xhz14jx
 
 Host1:
 ------
-#Replace crypto-config.yaml and configtx.yaml file as per your organization Name
+# Replace crypto-config.yaml and configtx.yaml file as per your organization Name.
 ./cryptogen generate --config=crypto-config.yaml
 ./configtxgen -profile mychannel -outputCreateChannelTx ./composer-channel.tx -channelID mychannel
 ./configtxgen -profile ComposerOrdererGenesis -outputBlock ./composer-genesis.block
